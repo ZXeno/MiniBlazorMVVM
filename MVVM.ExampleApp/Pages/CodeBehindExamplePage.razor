@@ -1,0 +1,40 @@
+﻿@inherits CodeBehindExamplePageBase
+@page "/codebehindexample"
+
+@if (ViewModel == null)
+{
+    <div class="alert alert-warning">
+        <p>Something went terribly wrong! The ViewModel isn't attached.</p>
+    </div>
+}
+else
+{
+    <h2>Code Behind Example Page</h2>
+    <div class="col col-md-8 col-sm-12">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h4>@(nameof(ViewModel.MyStringProperty)) Property:</h4>
+                <p>Value: @ViewModel.MyStringProperty</p>
+                <input class="form-control" @bind-value="ViewModel.MyStringProperty" @bind-value:event="oninput" type="text" />
+            </div>
+        </div>
+        <div class="card mb-4">
+            <div class="card-body">
+                <h4>@(nameof(ViewModel.CurrentCycleStringValue)) Property:</h4>
+                <p>Value: @ViewModel.CurrentCycleStringValue</p>
+                <button class="btn btn-primary" @onclick="OnCycleButtonClick">Cycle Value</button>
+            </div>
+        </div>
+        <div class="card mb-4">
+            <div class="card-body">
+                <h4>Fire Asynchronous event: (updates @(nameof(ViewModel.MyStringProperty)) property)</h4>
+                <button class="btn btn-primary" @onclick="async () => await ExampleAsyncCall()">Fire Async Call</button>
+            </div>
+        </div>
+    </div>
+}
+
+
+@*In this example, there is no @code{} block and all of the view logic is located in a code-behind file.
+    The page inherits from the "CodeBehindExamplePageBase.razor.cs" file, and can be accessed exactly like
+    the in-line code.*@

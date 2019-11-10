@@ -1,0 +1,55 @@
+﻿@page "/fetchdata"
+
+@using MBMVVM
+@using MVVM.ExampleApp.ViewModels
+@inherits ViewComponentBase<FetchDataPageViewModel>
+
+<h1>Weather forecast</h1>
+
+<p>This component demonstrates fetching data from a service.</p>
+
+@if (ViewModel.Forecasts == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Temp. (C)</th>
+                <th>Temp. (F)</th>
+                <th>Summary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var forecast in ViewModel.Forecasts)
+            {
+                <tr>
+                    <td>@forecast.Date.ToShortDateString()</td>
+                    <td>@forecast.TemperatureC</td>
+                    <td>@forecast.TemperatureF</td>
+                    <td>@forecast.Summary</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+
+    // Here, we've removed the fields from the view to the ViewModel,
+    // and simply referenced the viewmodel function for getting the data.
+    // Unlike with the codebehind, we've used the @inherits directive to
+    // use the DependencyInjection service to automatically grab our
+    // FetchDataPageViewModel instance. This cleans up the code we're
+    // using here in the inline code blocks.
+
+    protected override async Task OnInitializedAsync()
+    {
+        // We call the base OnInitializedAsync to ensure the PropertyChanged event is subscribed to.
+        await base.OnInitializedAsync();
+        await this.ViewModel.GetForecastAsync(DateTime.Now);
+    }
+}
