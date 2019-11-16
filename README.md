@@ -7,8 +7,8 @@ Implementation and usage of the classes is very, very simple.
 There is the `ViewModelBase.cs` class that you build all of your view models from. 
 
 Example:
-`
-public class MyFancyViewModel : ViewModelBase
+
+`public class MyFancyViewModel : ViewModelBase
 {
 	private string myFancyStringPropertyField = "My Fancy String Value!";
 	public string MyFancyStringProperty 
@@ -21,16 +21,15 @@ public class MyFancyViewModel : ViewModelBase
 			this.OnPropertyChanged();
 		}
 	}
-}
-`
+}`
 
 In  your `Startup.cs` class, be sure to register your viewmodel with the dependency injection system.
 `services.AddScoped<MyFancyViewModel>();`
 
 For your view, there is the `ViewComponentBase.cs` class. You can directly inhert this in your Blazor component/page, or you can extend it to create your custom view logic.
 
-This first example shows directly utilizing the ViewComponentBase to inject your viewmodel directly into a Blazor page:
-`
+This first example shows directly utilizing the ViewComponentBase to inject your viewmodel directly into a Blazor page
+
 	@page = "/fancypantspage"
 	@using MBMVVM
 	@inherits ViewComponentBase<MyFancyViewModel>
@@ -39,10 +38,9 @@ This first example shows directly utilizing the ViewComponentBase to inject your
 	{
 		<p>@this.ViewModel.MyFancyStringProperty</p>
 	}
-`
 
 If you have implemented custom view logic and extended the ViewComponentBase class, you can still use the same pattern to inject the view model:
-`
+
 	@using MBMVVM
 	@inherits MyFancyViewComponent
 
@@ -50,15 +48,13 @@ If you have implemented custom view logic and extended the ViewComponentBase cla
 	{
 		<p>@this.ViewModel.MyFancyStringProperty</p>
 	}
-`
 
 And when we define our custom view component/page logic:
-`
+
 	public class MyFancyViewComponent : ViewComponentBase<CodeBehindExampleViewModel>
 	{
 		// View logic here
 	}
-`
 
 See the example project for a working example of both the in-line and code-behind pattern using this MVVM implemenation.
 
