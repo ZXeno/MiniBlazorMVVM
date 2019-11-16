@@ -3,9 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29319.158
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniBlazorMVVM", "MiniBlazorMVVM\MiniBlazorMVVM.csproj", "{707504A1-C624-452D-AEBF-334796CE1877}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniBlazorMVVM", "MiniBlazorMVVM\MiniBlazorMVVM.csproj", "{707504A1-C624-452D-AEBF-334796CE1877}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVM.ExampleApp", "MVVM.ExampleApp\MVVM.ExampleApp.csproj", "{4A805F87-1EDE-4813-ABED-2A0F9A83411C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVVM.ExampleApp", "MVVM.ExampleApp\MVVM.ExampleApp.csproj", "{4A805F87-1EDE-4813-ABED-2A0F9A83411C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0CC210D7-FCF1-4FD4-A72C-515AAB438964}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
